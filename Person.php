@@ -6,10 +6,13 @@ class Person
     public $lastName;
     public $age;
     
+    private static $nbreDePerson = 0;
+
     public function __construct($firstName,$lastName,$age){
        $this->firstName = $firstName;
        $this->lastName = $lastName;
        $this->age = $age;
+       static::$nbreDePerson++;
     }
 
     public function danser()
@@ -17,7 +20,7 @@ class Person
         echo "je danse bien !";
     }
 
-    private function sePresenter()
+    public function sePresenter()
     {
         return "Je m'appelle ".$this->firstName." ".$this->lastName." et j'ai ".$this->age." ans";
     }
@@ -27,6 +30,14 @@ class Person
     }
 
 
+
+    /**
+     * Get the value of nbreDePerson
+     */ 
+    public static function getNbreDePerson()
+    {
+        return static::$nbreDePerson; // on peut aussi mettre self
+    }
 }
 
 
@@ -34,9 +45,13 @@ class Person
 
 
 $john = new Person('John','Doe',44);
-echo $john->lastName.PHP_EOL;
+$pierre = new Person('Pierre','Durand',22);
+$jeanne = new Person('Jeanne','Matheo',58);
+/*echo $john->lastName.PHP_EOL;
 echo $john->danser().PHP_EOL;
 
-echo $john->presenteToi();
+echo $john->presenteToi();*/
+
+echo Person::getNbreDePerson();
 
 //var_dump($john);

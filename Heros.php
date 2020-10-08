@@ -1,9 +1,9 @@
 <?php
     Class Heros {
 
-        public $nom;
-        public $vie;
-        public $force;
+        private string $nom;
+        private int $vie;
+        private int  $force;
 
         public function __construct($nom, $vie, $force) {
             $this->nom = $nom;
@@ -17,6 +17,14 @@
 
         public function Tuer() {
 
+        }
+
+        /**
+         * Get the value of nom
+         */ 
+        public function getNom():string
+        {
+                return $this->nom;
         }
     }
 ?>
